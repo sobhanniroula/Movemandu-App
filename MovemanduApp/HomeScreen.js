@@ -10,7 +10,7 @@ export default class HomeScreen extends Component {
 
                 <Header>
                     <Left>
-                        <Icon name="ios-menu" onPress={() => this.props.navigation.navigate('DrawerOpen')} />
+                        <Icon name="menu" onPress={() => this.props.navigation.navigate('DrawerOpen')} />
                     </Left>
                 </Header>
 
