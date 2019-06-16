@@ -17,7 +17,7 @@ export default class SettingsScreen extends Component {
                 </Header>
 
                 <Content contentContainerStyle={[styles.container, styles.colorGreenOpc]}>
-                    <Text style={styles.text}>Settings Screens</Text>
+                    <Text style={styles.text}>Settings Screen</Text>
                 </Content>
 
             </Container>

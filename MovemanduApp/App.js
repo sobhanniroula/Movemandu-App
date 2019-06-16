@@ -3,6 +3,8 @@ import {StyleSheet, Text, View} from 'react-native';
 import {DrawerNavigator} from 'react-navigation';
 import HomeScreen from './HomeScreen';
 import SettingsScreen from './SettingsScreen';
+import LoginScreen from './LoginScreen';
+import drawerContentComponents from './drawerContentComponents';
 
 
 export default class App extends Component {
@@ -15,11 +17,19 @@ export default class App extends Component {
   }
 }
 
-const MyNavbar = DrawerNavigator({
-  Home: {
-    screen: HomeScreen
+const MyNavbar = DrawerNavigator(
+  {
+    Home: {
+      screen: HomeScreen
+    },
+    Settings: {
+      screen: SettingsScreen
+    },
+    Login: {
+      screen: LoginScreen
+    }
   },
-  Settings: {
-    screen: SettingsScreen
-  }
-})
+    {
+      contentComponent: drawerContentComponents
+    }
+  );
