@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { View, Text, Stylesheet } from 'react-native';
-import { Icon, Button, Container, Header, Content, Left, Body, Right } from 'native-base';
+import { View, Text, StyleSheet } from 'react-native';
+import { Icon, Button, Container, Header, Content, Left, Body, Right, Footer } from 'native-base';
+
 
 
 export default class HomeScreen extends Component {
@@ -17,10 +18,16 @@ export default class HomeScreen extends Component {
                 </Header>
 
                 <Content contentContainerStyle={[styles.container, styles.colorOrange2opc]}>
-                    <Text style={styles.text}>WELCOME TO</Text>
-                    <Text style={styles.textMove}>move</Text>
-                    <Text style={styles.textMandu}>MANDU</Text>                    
+                    <Text style={styles.text}>welcome</Text>   
+                    <Button iconLeft rounded style={styles.button}>
+                        <Icon name='search' />
+                        <Text style={{padding: 30, marginLeft: 10, color: '#ddd', fontSize: 15}}>Search Apartments</Text>
+                    </Button>             
                 </Content>
+
+                
+                    
+                
 
             </Container>
         );
@@ -28,23 +35,21 @@ export default class HomeScreen extends Component {
 }
 
 
-const styles = {
+const styles = StyleSheet.create({
     container: {
             flex: 1,
-            alignItems: 'center',
-            justifyContent: 'center'            
-    },
-    viewcontent: {
-
+            alignItems: 'center'           
     },
     text: {
-        color: '#fff',
-        fontSize: 15
+        color: '#aaa',
+        fontFamily: 'Raleway',
+        fontSize: 55,
+        top: '38%'
     },
     iconText: {
         color: '#fff',
         fontSize: 35,
-        marginLeft: 5,
+        marginLeft: 2,
         paddingLeft: 5
     },
     colorGreen: {
@@ -68,12 +73,23 @@ const styles = {
     textMove: {
         fontSize: 25,
         color: '#00b300',
-        marginTop: 15,
+        marginTop: '50%',
         textAlign: 'left'
     },
     textMandu: {
         fontSize: 40,
         color: '#ccc',
-        marginTop: 0
+        marginTop: '0%',
+        fontFamily: 'Raleway'
+    },
+    button: {
+        backgroundColor: '#ee4f42fa',
+        color: '#fff',
+        width: '70%',
+        top: '120%',
+       padding: 10,
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        
     }
-};
+});

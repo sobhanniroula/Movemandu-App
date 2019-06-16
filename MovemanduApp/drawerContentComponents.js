@@ -17,7 +17,7 @@ export default class drawerContentComponents extends Component {
   render() {
     return (
         <View style={styles.container}>
-            <LinearGradient colors={['#da4f42fa', '#00bb88fa', '#4887b0']} style={styles.linearGradient}>
+            <LinearGradient colors={['#A40606bd', '#D98324']} style={styles.linearGradient}>
             <View style={styles.headerContainer}>
                 <ImageBackground source={require('./assets/movemandu-black.png')} style={{flex: 1, width: 275, justifyContent: 'center', marginTop: 5}} ></ImageBackground>
             </View>
@@ -31,6 +31,9 @@ export default class drawerContentComponents extends Component {
                 <View style={[styles.screenStyle, styles.mt25, (this.props.activeItemKey=='Login') ? styles.activeBackgroundColor : null]}>
                     <Text style={[styles.screenTextStyle, (this.props.activeItemKey=='Login') ? styles.selectedTextStyle : null]} onPress={this.navigateToScreen('Login')}>LOGIN</Text>
                 </View>
+            </View>
+            <View style={styles.footer}>
+                <Text style={styles.footerText}>{'\u00A9'} 2019. Sobhan Niroula</Text>
             </View>
             </LinearGradient>
         </View>
@@ -77,9 +80,19 @@ const styles = StyleSheet.create({
     },
     activeBackgroundColor: {
         backgroundColor: '#ce690ded',
-        width: 'auto'
+        width: 270
     },
     mt25: {
         marginTop: 35
+    },
+    footer: {
+        flex: 1
+    },
+    footerText: {
+        position: 'absolute',
+        bottom: 25,
+        left: 50,
+        fontSize: 12,
+        color: '#ddd'
     }
 });
