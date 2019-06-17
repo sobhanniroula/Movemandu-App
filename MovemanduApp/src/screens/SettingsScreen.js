@@ -17,7 +17,7 @@ export default class SettingsScreen extends Component {
                 </Header>
 
                 <Content contentContainerStyle={[styles.container, styles.colorGreenOpc]}>
-                    <Text style={styles.text}>Settings Screen</Text>
+                    <Text style={styles.text}>Settings</Text>
                 </Content>
 
             </Container>
@@ -29,13 +29,13 @@ export default class SettingsScreen extends Component {
 const styles = {
     container: {
             flex: 1,
-            alignItems: 'center',
-            justifyContent: 'center'
+            alignItems: 'center'
     },
     text: {
-        color: '#fff',
-        fontSize: 20,
-        fontFamily: 'Raleway'
+        color: '#bbb',
+        fontSize: 50,
+        fontFamily: 'Raleway',
+        top: '38%'
     },
     iconText: {
         color: '#fff',
