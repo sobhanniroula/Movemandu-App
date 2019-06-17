@@ -11,11 +11,26 @@ import SignupTabScreen from './SignupTabScreen';
 export default class LoginScreen extends Component {
     state = {
         index: 0,
+        currentRoute: 'first',
+        currentColor: '',
         routes: [
           { key: 'first', title: 'Login' },
           { key: 'second', title: 'Signup' },
         ],
       };
+
+      handleColor = () => {
+        if (this.state.index === 0) {
+            this.setState({
+                currentColor: 'background: "#4887b0"'
+            });
+        } else {
+            this.setState({
+                currentColor: 'background: "#00bb88"'
+            });
+        }
+    }
+
 
     render() {
         return (
@@ -37,13 +52,15 @@ export default class LoginScreen extends Component {
                     })}
                     onIndexChange={index => this.setState({ index })}
                     initialLayout={{ width: Dimensions.get('window').width}}
-                    style={{backgroundColor: '#ccc'}}
+                    style={this.state.currentColor}
                 />
 
             </Container>
         );
     }
 }
+
+
 
 
 // const LoginSignupTab = createAppContainer(

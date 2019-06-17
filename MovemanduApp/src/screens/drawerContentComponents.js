@@ -20,7 +20,7 @@ export default class drawerContentComponents extends Component {
         <View style={styles.container}>
             <LinearGradient colors={['#A40606bd', '#D98324']} style={styles.linearGradient}>
             <View style={styles.headerContainer}>
-                <ImageBackground source={require('./assets/movemandu-black.png')} style={{flex: 1, width: 275, justifyContent: 'center', marginTop: 5}} ></ImageBackground>
+                <ImageBackground source={require('../../assets/movemandu-black.png')} style={{flex: 1, width: 275, justifyContent: 'center', marginTop: 5}} ></ImageBackground>
             </View>
             <View style={styles.screenContainer}>
                 <View style={[styles.screenStyle, styles.mt25, (this.props.activeItemKey=='Home') ? styles.activeBackgroundColor : null]}>

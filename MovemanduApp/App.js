@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {DrawerNavigator} from 'react-navigation';
-import HomeScreen from './HomeScreen';
-import SettingsScreen from './SettingsScreen';
-import LoginScreen from './LoginScreen';
-import drawerContentComponents from './drawerContentComponents';
+import HomeScreen from './src/screens/HomeScreen';
+import SettingsScreen from './src/screens/SettingsScreen';
+import LoginScreen from './src/screens/LoginScreen';
+import drawerContentComponents from './src/screens/drawerContentComponents';
 
 
 export default class App extends Component {
