@@ -1,9 +1,22 @@
 import React, { Component } from 'react';
-import { View, Text, Stylesheet } from 'react-native';
-import { Icon, Button, Container, Header, Content, Left, Body, Right } from 'native-base';
+import { View, Text, StyleSheet, Dimensions } from 'react-native';
+import { Button, Container, Header, Content, Left, Body, Right } from 'native-base';
+import Icon from 'react-native-vector-icons/Ionicons';
+import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
+import LoginTabScreen from './LoginTabScreen';
+import SignupTabScreen from './SignupTabScreen';
 
 
-export default class SettingsScreen extends Component {
+
+export default class LoginScreen extends Component {
+    state = {
+        index: 0,
+        routes: [
+          { key: 'first', title: 'Login' },
+          { key: 'second', title: 'Signup' },
+        ],
+      };
+
     render() {
         return (
             <Container>
@@ -16,9 +29,16 @@ export default class SettingsScreen extends Component {
                     <Right />
                 </Header>
 
-                <Content contentContainerStyle={[styles.container, styles.colorBlue]}>
-                    <Text style={styles.text}>Login Screens</Text>
-                </Content>
+                <TabView
+                    navigationState={this.state}
+                    renderScene={SceneMap({
+                        first: LoginTabScreen,
+                        second: SignupTabScreen,
+                    })}
+                    onIndexChange={index => this.setState({ index })}
+                    initialLayout={{ width: Dimensions.get('window').width}}
+                    style={{backgroundColor: '#ccc'}}
+                />
 
             </Container>
         );
@@ -26,15 +46,48 @@ export default class SettingsScreen extends Component {
 }
 
 
-const styles = {
+// const LoginSignupTab = createAppContainer(
+//     createMaterialTopTabNavigator(
+//     {
+//       Login: { screen: LoginTabScreen },
+//       Signup: { screen: SignupTabScreen },
+//     },
+//     {
+//       tabBarPosition: 'top',
+//       swipeEnabled: true,
+//       animationEnabled: true,
+//       tabBarOptions: {
+//         activeTintColor: '#FFFFFF',
+//         inactiveTintColor: '#F8F8F8',
+//         style: {
+//           backgroundColor: '#633689',
+//         },
+//         labelStyle: {
+//           textAlign: 'center',
+//         },
+//         indicatorStyle: {
+//           borderBottomColor: '#87B56A',
+//           borderBottomWidth: 2,
+//         },
+//       },
+//     }
+//   ));
+
+  
+const styles = StyleSheet.create({
     container: {
             flex: 1,
             alignItems: 'center',
-            justifyContent: 'center'
+            // justifyContent: 'center'
+    },
+    scene: {
+        flex: 1,
     },
     text: {
         color: '#fff',
-        fontSize: 20
+        fontSize: 20,
+        fontFamily: 'Raleway',
+        top: 50
     },
     iconText: {
         color: '#fff',
@@ -63,4 +116,4 @@ const styles = {
     colorBlue: {
         backgroundColor: '#4887b0'
     }
-};
+});

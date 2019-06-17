@@ -34,7 +34,8 @@ const styles = {
     },
     text: {
         color: '#fff',
-        fontSize: 20
+        fontSize: 20,
+        fontFamily: 'Raleway'
     },
     iconText: {
         color: '#fff',

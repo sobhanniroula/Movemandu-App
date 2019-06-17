@@ -21,7 +21,7 @@ export default class HomeScreen extends Component {
                     <Text style={styles.text}>welcome</Text>   
                     <Button iconLeft rounded style={styles.button}>
                         <Icon name='search' />
-                        <Text style={{padding: 30, marginLeft: 10, color: '#ddd', fontSize: 15}}>Search Apartments</Text>
+                        <Text style={{padding: 20, marginLeft: 10, color: '#ddd', fontSize: 15, fontFamily: 'Raleway'}}>Search  Apartments</Text>
                     </Button>             
                 </Content>
 
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
     },
     button: {
         backgroundColor: '#ee4f42fa',
-        color: '#fff',
+        color: '#ddd',
         width: '70%',
         top: '120%',
        padding: 10,

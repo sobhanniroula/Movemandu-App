@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, ImageBackground } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
 import { NavigationActions } from 'react-navigation';
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -23,17 +24,17 @@ export default class drawerContentComponents extends Component {
             </View>
             <View style={styles.screenContainer}>
                 <View style={[styles.screenStyle, styles.mt25, (this.props.activeItemKey=='Home') ? styles.activeBackgroundColor : null]}>
-                    <Text style={[styles.screenTextStyle, (this.props.activeItemKey=='Home') ? styles.selectedTextStyle : null]} onPress={this.navigateToScreen('Home')}>HOME</Text>
+                    <Text style={[styles.screenTextStyle, styles.myFont, (this.props.activeItemKey=='Home') ? styles.selectedTextStyle : null]} onPress={this.navigateToScreen('Home')}><Icon name="ios-home" style={{color: '#ccc', fontSize: 22}}/>    Home</Text>
                 </View>
                 <View style={[styles.screenStyle, styles.mt25, (this.props.activeItemKey=='Settings') ? styles.activeBackgroundColor : null]}>
-                    <Text style={[styles.screenTextStyle, (this.props.activeItemKey=='Settings') ? styles.selectedTextStyle : null]} onPress={this.navigateToScreen('Settings')}>SETTINGS</Text>
+                    <Text style={[styles.screenTextStyle, styles.myFont, (this.props.activeItemKey=='Settings') ? styles.selectedTextStyle : null]} onPress={this.navigateToScreen('Settings')}><Icon name="ios-settings" style={{color: '#ccc', fontSize: 22}}/>    Settings</Text>
                 </View>
                 <View style={[styles.screenStyle, styles.mt25, (this.props.activeItemKey=='Login') ? styles.activeBackgroundColor : null]}>
-                    <Text style={[styles.screenTextStyle, (this.props.activeItemKey=='Login') ? styles.selectedTextStyle : null]} onPress={this.navigateToScreen('Login')}>LOGIN</Text>
+                    <Text style={[styles.screenTextStyle, styles.myFont, (this.props.activeItemKey=='Login') ? styles.selectedTextStyle : null]} onPress={this.navigateToScreen('Login')}><Icon name="ios-log-in" style={{color: '#ccc', fontSize: 22}}/>    Login</Text>
                 </View>
             </View>
             <View style={styles.footer}>
-                <Text style={styles.footerText}>{'\u00A9'} 2019. Sobhan Niroula</Text>
+                <Text style={[styles.footerText, styles.myFont]}>{'\u00A9'} 2019. Sobhan Niroula</Text>
             </View>
             </LinearGradient>
         </View>
@@ -55,6 +56,9 @@ const styles = StyleSheet.create({
     headerContainer: {
         height: 150,
     },
+    myFont: {
+        fontFamily: 'Raleway'
+    },
     headerText: {
         color: '#fff8f8',
     },
@@ -71,7 +75,7 @@ const styles = StyleSheet.create({
     screenTextStyle:{
         fontSize: 22, 
         textAlign: 'center',
-        color: '#fff',
+        color: '#ddd',
         paddingLeft: '25%'
     },
     selectedTextStyle: {
