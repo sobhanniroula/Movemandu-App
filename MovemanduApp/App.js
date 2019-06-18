@@ -4,6 +4,7 @@ import {DrawerNavigator} from 'react-navigation';
 import HomeScreen from './src/screens/HomeScreen';
 import SettingsScreen from './src/screens/SettingsScreen';
 import LoginScreen from './src/screens/LoginScreen';
+import AdminScreen from './src/screens/AdminScreen';
 import drawerContentComponents from './src/screens/drawerContentComponents';
 
 
@@ -27,6 +28,9 @@ const MyNavbar = DrawerNavigator(
     },
     Login: {
       screen: LoginScreen
+    },
+    Admin: {
+      screen: AdminScreen
     }
   },
     {
