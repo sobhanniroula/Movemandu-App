@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {View, StatusBar} from 'react-native';
 import {DrawerNavigator} from 'react-navigation';
 import HomeScreen from './src/screens/HomeScreen';
 import SettingsScreen from './src/screens/SettingsScreen';
@@ -11,9 +11,7 @@ import drawerContentComponents from './src/screens/drawerContentComponents';
 export default class App extends Component {
   render() {
     return (
-      
         <MyNavbar /> 
-             
     );
   }
 }

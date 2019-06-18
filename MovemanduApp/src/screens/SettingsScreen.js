@@ -8,7 +8,7 @@ export default class SettingsScreen extends Component {
         return (
             <Container>
 
-                <Header style={styles.colorGreen}>
+                <Header style={styles.colorGreen} androidStatusBarColor='#00bb88'>
                     <Left>
                         <Icon name="ios-menu" onPress={() => this.props.navigation.navigate('DrawerOpen')} style={styles.iconText} />
                     </Left>

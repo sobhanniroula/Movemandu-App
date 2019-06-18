@@ -1,35 +1,33 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, StatusBar } from 'react-native';
 import { Icon, Button, Container, Header, Content, Left, Body, Right, Footer } from 'native-base';
 
 
 
 export default class HomeScreen extends Component {
     render() {
-        return (
-            <Container>
-
-                <Header style={styles.colorOrange2}>
-                    <Left>
-                        <Icon name="menu" onPress={() => this.props.navigation.navigate('DrawerOpen')} style={styles.iconText} />
-                    </Left>
-                    <Body />
-                    <Right/>
-                </Header>
-
-                <Content contentContainerStyle={[styles.container, styles.colorOrange2opc]}>
-                    <Text style={styles.text}>welcome</Text>   
-                    <Button iconLeft rounded style={styles.button}>
-                        <Icon name='search' />
-                        <Text style={{padding: 20, marginLeft: 10, color: '#ddd', fontSize: 15, fontFamily: 'Raleway'}}>Search  Apartments</Text>
-                    </Button>             
-                </Content>
-
-                
-                    
-                
-
-            </Container>
+        return (                 
+                <Container>
+                  
+                  <Header style={styles.colorOrange2} androidStatusBarColor='#da4f42'>
+                      <Left>
+                          <Icon name="menu" onPress={() => this.props.navigation.navigate('DrawerOpen')} style={styles.iconText} />
+                      </Left>
+                      <Body />
+                      <Right/>
+                  </Header>
+  
+                  <Content contentContainerStyle={[styles.container, styles.colorOrange2opc]}>
+                      <Text style={styles.text}>welcome</Text>   
+                      <Button iconLeft rounded style={styles.button}>
+                          <Icon name='search' />
+                          <Text style={{padding: 20, marginLeft: 10, color: '#ddd', fontSize: 15, fontFamily: 'Raleway'}}>Search  Apartments</Text>
+                      </Button>             
+                  </Content>
+  
+              </Container>   
+            
+            
         );
     }
 }

@@ -44,10 +44,10 @@ export default class drawerContentComponents extends Component {
                     
                 </View>
                 <View style={styles.footer}>
-                    <View>
-                        <ImageBackground source={require('../../assets/movemandu-white.png')} style={{flex: 1, height: 50, width: 100, justifyContent: 'flex-start', marginRight: '5%', left: '30%', top: 200}} ></ImageBackground>
+                    <View style={{justifyContent: 'flex-start'}}>
+                        <ImageBackground source={require('../../assets/movemandu-white.png')} style={{flex: 1, width: 100, height: 50, marginRight: '5%', left: '30%', top: '80%'}} ></ImageBackground>
                     </View>
-                    <View>
+                    <View style={{justifyContent: 'flex-end', bottom: 30}}> 
                     <Text style={[styles.footerText, styles.myFont]}>{'\u00A9'} 2019. {'\n'}Sobhan Niroula</Text>
                     </View>
                     
@@ -111,14 +111,13 @@ const styles = StyleSheet.create({
     },
     footer: {
         flex: 1,
-        flexDirection: 'row'
+        flexDirection: 'row',
+        height: 60
     },
     footerText: {
         position: 'absolute',
-        bottom: 25,
         left: 50,
         fontSize: 12,
-        color: '#ddd',
-        justifyContent: 'flex-end'
+        color: '#ddd'
     }
 });
