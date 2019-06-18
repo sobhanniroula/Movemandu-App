@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     paddingLeft: 45,
     borderRadius: 20,
-    color: '#ffffff',
+    color: '#fff',
     fontFamily: 'Raleway'
   },
   inputWrapper: {
