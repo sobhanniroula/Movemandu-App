@@ -16,13 +16,15 @@ export default class SplashScreen extends Component {
 
         const { WIDTH, HEIGHT } = Dimensions.get('window');
         return (
-            <ImageBackground source={require('../../assets/mountain.jpg')} style={{width: '100%', height: '100%'}}>
-                <StatusBar backgroundColor="transparent" barStyle="light-content" />
+            
+            <View style={{flex: 1, backgroundColor: '#999'}}>
+                <StatusBar backgroundColor="transparent" barStyle="light-content" hidden/>
 
-                <View style={{flex: 1}}> 
-                    <Image source={require('../../assets/title-image.png')} style={{height: 100, width: 150}} />
+                <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}> 
+                    <Image source={require('../../assets/logo.png')} style={{height: 100, width: 200, backgroundColor: 'transparent'}} />
                 </View>
-            </ImageBackground>
+                </View>
+            
         );
     }
 }

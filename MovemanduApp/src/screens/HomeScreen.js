@@ -10,7 +10,7 @@ export default class HomeScreen extends Component {
                 <Container>
                   
                   <Header style={styles.colorOrange2} androidStatusBarColor='#da4f42'>
-                      <Left>
+                      <Left style={{top: '4%'}}>
                           <Icon name="menu" onPress={() => this.props.navigation.navigate('DrawerOpen')} style={styles.iconText} />
                       </Left>
                       <Body />

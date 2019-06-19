@@ -37,7 +37,7 @@ export default class LoginScreen extends Component {
             <Container>
 
                 <Header style={styles.colorBlue} androidStatusBarColor='#4887b0'>
-                    <Left>
+                    <Left style={{top: '4%'}}>
                         <Icon name="ios-menu" onPress={() => this.props.navigation.navigate('DrawerOpen')} style={styles.iconText} />
                     </Left>
                     <Body />

@@ -10,7 +10,39 @@ import drawerContentComponents from './src/screens/drawerContentComponents';
 
 
 export default class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isLoading: true
+    };
+  }
+
+  // For Splash Screen
+  performTimeConsumingTask = async() => {
+    return new Promise((resolve) => 
+      setTimeout(
+        () => { resolve('result') },
+        2000
+      ));
+  }
+
+  // For Splash Screen
+  async componentDidMount() {
+    const data = await this.performTimeConsumingTask();
+
+    if (data !== null) {
+      this.setState({
+        isLoading: false
+      });
+    }
+  }
+
   render() {
+    if (this.state.isLoading) {
+      return <SplashScreen />;
+    }
+
     return (
         <MyNavbar /> 
     );
