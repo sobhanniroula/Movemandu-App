@@ -20,6 +20,22 @@ export default class SettingsScreen extends Component {
                     <View style={{top: '1%'}}>
                     <Text style={styles.textHeader}>Admin Panel</Text>
                     </View>
+
+                    <View style={{flex: 1, width: '90%'}}>
+                        <View style={{height: 50, marginTop: 30}}>
+                            <Button style={styles.button}>
+                                <Text style={{fontFamily: 'Raleway', fontSize: 14, color: '#ddd'}}>Add new post</Text>
+                            </Button>
+                        </View>
+                        
+                        <View style={{flex: 1, marginTop: 20, flexDirection: 'row'}}>
+                            <Text style={styles.postText}>1</Text>
+                            <Text style={styles.postText}>Baneshwor House</Text>
+                            <Text style={styles.postText}>2019-06-19</Text>
+                            <Text style={styles.postText}>New Baneshwor</Text>
+                            
+                        </View>
+                    </View>
                     
                 </Content>
 
@@ -44,6 +60,19 @@ const styles = {
         fontSize: 35,
         marginLeft: 5,
         paddingLeft: 5
+    },
+    postText: {
+        marginRight: 20,
+        color: '#ddd',
+        fontFamily: 'Raleway',
+        fontSize: 12
+    },
+    button: {
+        height: 40,
+        width: 120,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#7711ff'
     },
     colorGreen: {
         backgroundColor: '#00bb88'

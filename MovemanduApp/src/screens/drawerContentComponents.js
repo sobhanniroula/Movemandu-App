@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Text, View, StyleSheet, ImageBackground, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { NavigationActions } from 'react-navigation';
-import LinearGradient from 'react-native-linear-gradient';
 
 
 export default class drawerContentComponents extends Component {
@@ -37,6 +36,9 @@ export default class drawerContentComponents extends Component {
                     </View>
                     <View style={[styles.screenStyle, styles.mt25, (this.props.activeItemKey=='Admin') ? styles.activeBackgroundColor : null]}>
                         <Text style={[styles.screenTextStyle, styles.myFont, (this.props.activeItemKey=='Admin') ? styles.selectedTextStyle : null]} onPress={this.navigateToScreen('Admin')}>  <Icon name="ios-man" style={{color: '#eee', fontSize: 20}}/>   Admin</Text>
+                    </View>
+                    <View style={[styles.screenStyle, styles.mt25, (this.props.activeItemKey=='Splash') ? styles.activeBackgroundColor : null]}>
+                        <Text style={[styles.screenTextStyle, styles.myFont, (this.props.activeItemKey=='Splash') ? styles.selectedTextStyle : null]} onPress={this.navigateToScreen('Splash')}><Icon name="md-water" style={{color: '#eee', fontSize: 20}}/>   Splash Screen</Text>
                     </View>
                     <View style={[styles.screenStyle, styles.mt25, (this.props.activeItemKey=='Login') ? styles.activeBackgroundColor : null]}>
                         <Text style={[styles.screenTextStyle, styles.myFont, (this.props.activeItemKey=='Login') ? styles.selectedTextStyle : null]} onPress={this.navigateToScreen('Login')}><Icon name="ios-log-in" style={{color: '#eee', fontSize: 20}}/>   Login</Text>

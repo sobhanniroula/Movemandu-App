@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "hoist-non-react-statics": "^3.3.0",
-    "native-base": "^2.12.1",
+    "native-base": "^2.7.0",
     "prop-types": "^15.7.2",
     "react": "16.8.3",
     "react-native": "0.59.9",
@@ -19,7 +19,8 @@
     "react-native-router-flux": "^4.0.6",
     "react-native-tab-view": "^2.6.1",
     "react-native-vector-icons": "^6.5.0",
-    "react-navigation": "^1.6.1"
+    "react-navigation": "^1.6.1",
+    "react-timer-mixin": "^0.13.4"
   },
   "devDependencies": {
     "@babel/core": "7.4.5",
