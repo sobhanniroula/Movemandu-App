@@ -114,8 +114,7 @@ const styles = StyleSheet.create({
         width: 120,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#7711ff',
-        left: WIDTH -
+        backgroundColor: '#7711ff'   
     },
     colorGreen: {
         backgroundColor: '#00bb88'
