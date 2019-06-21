@@ -34,15 +34,16 @@ const styles = {
     alignSelf: 'center',
     color: 'white',
     fontSize: 18,
-    fontWeight: '700',
     paddingTop: 10,
-    paddingBottom: 10
+    paddingBottom: 10,
+    fontFamily: 'Raleway',
+    letterSpacing: 2
   },
   button: {
     flex: 1,
     borderWidth: 3,
-    borderColor: '#8000ff88',
-    backgroundColor: "#8039c6aa",
+    borderColor: '#8039c677',
+    backgroundColor: "#8039c677",
     borderRadius: 25,
     marginTop: 5,
     marginLeft: 50,
