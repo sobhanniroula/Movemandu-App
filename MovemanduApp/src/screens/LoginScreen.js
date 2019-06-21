@@ -28,7 +28,7 @@ export default class LoginScreen extends Component {
         return (
             <Container>
 
-                <Header style={styles.colorBlue} androidStatusBarColor='#2293f4'>
+                <Header style={styles.colorBlue2} androidStatusBarColor='#2293f4'>
                     <Left style={{top: '4%'}}>
                         <Icon name="ios-menu" onPress={() => this.props.navigation.navigate('DrawerOpen')} style={styles.iconText} />
                     </Left>
@@ -96,5 +96,8 @@ const styles = StyleSheet.create({
     },
     colorBlue: {
         backgroundColor: '#4887b0'
+    },
+    colorBlue2: {
+        backgroundColor: '#2293f4'
     }
 });

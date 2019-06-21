@@ -59,12 +59,11 @@ export default class SignupTabScreen extends Component {
                     <Text style={styles.text}><Icon name="ios-person-add" style={{fontSize: 60}} /></Text>
                     </View>
                     
-                    <View style={{marginTop: 60, height: 230}}>
+                    <View style={{marginTop: 60, height: 250}}>
                         <View style={{flex: 1}}>
                             <Icon name="ios-mail" style={styles.iconMail} />
                             <UserInput
                                 placeholder='Email'
-                                placeholderTextColor='white'
                                 value={email}
                                 onChangeText={email => this.setState({ email })}
                             />
@@ -74,7 +73,6 @@ export default class SignupTabScreen extends Component {
                             <Image source={usernameImg} style={styles.inlineImg} />      
                             <UserInput
                                 placeholder='Username'
-                                placeholderTextColor='white'
                                 value={username}
                                 onChangeText={username => this.setState({ username })}
                             />
@@ -84,7 +82,6 @@ export default class SignupTabScreen extends Component {
                             <Image source={passwordImg} style={styles.inlineImg} />
                             <UserInput
                                 placeholder='Password'
-                                placeholderTextColor='white'
                                 value={password}
                                 secureTextEntry={this.state.showPass}
                                 onChangeText={password => this.setState({ password })}
@@ -101,7 +98,6 @@ export default class SignupTabScreen extends Component {
                             <Image source={passwordImg} style={styles.inlineImg} />
                             <UserInput
                                 placeholder='Re-enter password'
-                                placeholderTextColor='white'
                                 value={rePassword}
                                 secureTextEntry={this.state.showPass}
                                 onChangeText={rePassword => this.setState({ rePassword })}
@@ -158,12 +154,12 @@ const styles = StyleSheet.create({
         width: 22,
         height: 22,
         left: 35,
-        top: 9
+        top: 12
     },
     btnEye: {
         position: 'absolute',
-        top: 57,
-        right: 30,
+        top: 12,
+        right: 35,
         zIndex:100
     },
     iconEye: {

@@ -2,7 +2,7 @@ import React from 'react';
 import { View, TextInput, Text, Dimensions } from 'react-native';
 
 const UserInput = ({ source, value, onChangeText, placeholder, secureTextEntry, multiline, numberOfLines }) => {
-  const {inputStyle, containerStyle } = styles;
+  const {inputStyle, containerStyle, textWhite } = styles;
 
   return (
     <View style={containerStyle}>
@@ -10,6 +10,7 @@ const UserInput = ({ source, value, onChangeText, placeholder, secureTextEntry, 
         source={source}
         secureTextEntry={secureTextEntry}
         placeholder={placeholder}
+        placeholderTextColor={"#eee"}
         value={value}
         onChangeText={onChangeText}
         autoCorrect={false}
@@ -43,6 +44,9 @@ const styles = {
         fontFamily: 'Raleway',
         margin: 2,
         paddingLeft: 50
+  },
+  textWhite: {
+    color: '#fff'
   }
 };
 

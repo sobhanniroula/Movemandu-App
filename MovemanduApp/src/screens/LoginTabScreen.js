@@ -47,34 +47,40 @@ export default class LoginTabScreen extends Component {
         const { username, password, error, loading } = this.state;
 
             return (
-                <View style={[styles.container, styles.colorBlue]}>
+                <View style={[styles.container, styles.colorBlue2]}>
 
                     <KeyboardAvoidingView behavior="padding" style={styles.container}>
                         <View style={{height: 80}}>
                         <Text style={styles.text}><Icon name="ios-log-in" style={{fontSize: 70}} /></Text>
                         </View>
                    
-                        <View style={{marginTop: 75, height: 100}}>
+                        <View style={{marginTop: 75, height: 180}}>
+                            <View style={{flex: 1}}>
+                            <Image source={usernameImg} style={styles.inlineImg} />
                             <UserInput
-                                source={usernameImg}
                                 placeholder="Username"
                                 value={username}
                                 onChangeText={username => this.setState({ username })}
                             />
-                            <UserInput
-                                style={{marginTop: -35}}
-                                source={passwordImg}
-                                secureTextEntry={this.state.showPass}
-                                placeholder="Password"
-                                value={password}
-                                onChangeText={password => this.setState({ password })}
-                            />
-                            <TouchableOpacity
-                                activeOpacity={0.7}
-                                style={styles.btnEye}
-                                onPress={this.showPass}>
-                                <Image source={eyeImg} style={styles.iconEye} />
-                            </TouchableOpacity>
+                            </View>
+                            
+                            
+                            <View style={{flex: 1}}>
+                                <Image source={passwordImg} style={styles.inlineImg} />
+                                <UserInput
+                                    secureTextEntry={this.state.showPass}
+                                    placeholder="Password"
+                                    value={password}
+                                    onChangeText={password => this.setState({ password })}
+                                />
+                                <TouchableOpacity
+                                    activeOpacity={0.7}
+                                    style={styles.btnEye}
+                                    onPress={this.showPass}>
+                                    <Image source={eyeImg} style={styles.iconEye} />
+                                </TouchableOpacity>
+                            </View>
+                            
                             
                             <Text style={styles.errorText}>
                                 {error}
@@ -112,13 +118,21 @@ const styles = StyleSheet.create({
     },
     btnEye: {
         position: 'absolute',
-        top: 57,
-        right: 30
+        top: 12,
+        right: 35
     },
     iconEye: {
         width: 25,
         height: 25,
         tintColor: 'rgba(0,0,0,0.2)'
+    },
+    inlineImg: {
+        position: 'absolute',
+        zIndex: 99,
+        width: 22,
+        height: 22,
+        left: 35,
+        top: 12
     },
     text: {
         color: '#fff',
@@ -154,5 +168,8 @@ const styles = StyleSheet.create({
     },
     colorBlue: {
         backgroundColor: '#4887b0'
+    },
+    colorBlue2: {
+        backgroundColor: '#2293f4'
     }
 });
