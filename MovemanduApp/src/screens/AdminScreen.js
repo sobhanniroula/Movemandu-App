@@ -101,11 +101,11 @@ const styles = StyleSheet.create({
     },
     postText: {
         marginRight: 20,
-        color: '#333',
+        color: '#aaa',
         fontFamily: 'Raleway',
         fontSize: 12,
         textAlign: 'center',
-        height: 30,
+        height: 50,
         backgroundColor: '#ccc',
         width: 50
     },

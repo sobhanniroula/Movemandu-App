@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {View, StatusBar} from 'react-native';
 import {DrawerNavigator} from 'react-navigation';
 import HomeScreen from './src/screens/HomeScreen';
 import SettingsScreen from './src/screens/SettingsScreen';
@@ -14,8 +13,11 @@ export default class App extends Component {
     super(props);
 
     this.state = {
-      isLoading: true
+      isLoading: true,
+      jwt: ''
     };
+
+    this.logOut = this.logOut.bind(this);
   }
 
   // For Splash Screen
@@ -38,16 +40,26 @@ export default class App extends Component {
     }
   }
 
+  // Logout
+  logOut = () => {
+    this.setState({
+        jwt: ''
+    })
+}
+
   render() {
     if (this.state.isLoading) {
       return <SplashScreen />;
     }
-
-    return (
-        <MyNavbar /> 
-    );
+        return (
+          <MyNavbar />
+        );
+      
+        
+      }
+    
   }
-}
+
 
 const MyNavbar = DrawerNavigator(
   {
@@ -71,3 +83,5 @@ const MyNavbar = DrawerNavigator(
       contentComponent: drawerContentComponents
     }
   );
+
+  // export { MyNavbar };

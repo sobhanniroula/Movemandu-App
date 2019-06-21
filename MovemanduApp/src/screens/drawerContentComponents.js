@@ -6,6 +6,12 @@ import { NavigationActions } from 'react-navigation';
 
 export default class drawerContentComponents extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.navigateToScreen = this.navigateToScreen.bind(this);
+    }
+
     navigateToScreen = route =>(
         () => {
         const navigateAction = NavigationActions.navigate({
@@ -14,49 +20,91 @@ export default class drawerContentComponents extends Component {
         this.props.navigation.dispatch(navigateAction);
     })
 
+
   render() {
-    return (
-        <View style={styles.container}>
-            <ImageBackground source={require('../../assets/Dharahara.jpg')} style={{flex: 1, height: '100%', width: '100%'}}>
-                <View style={styles.headerContainer}>
-                    <View style={{top: 25, left: 10, justifyContent: 'flex-start'}}>
-                        <Image source={require('../../assets/user-logo.png')} style={styles.userLogo}></Image>
+      if(!this.props.jwt) {
+        return (
+            <View style={styles.container}>
+                <ImageBackground source={require('../../assets/Dharahara.jpg')} style={{flex: 1, height: '100%', width: '100%'}}>
+                    <View style={styles.headerContainer}>
+                        <View style={{top: 25, left: 10, justifyContent: 'flex-start'}}>
+                            <Image source={require('../../assets/user-logo.png')} style={styles.userLogo}></Image>
+                        </View>
+                        <View style={{justifyContent: 'flex-end', marginLeft: 25, marginBottom: 10}}>
+                            <Text style={{fontFamily: 'Raleway', color: '#fff', fontSize: 16, fontWeight: 'bold'}}>James Smith</Text>
+                            <Text style={{fontFamily: 'Raleway', color: '#ddd', fontSize: 12, lineHeight: 20}}>james.smith@example.com</Text>
+                        </View>
                     </View>
-                    <View style={{justifyContent: 'flex-end', marginLeft: 25, marginBottom: 10}}>
-                        <Text style={{fontFamily: 'Raleway', color: '#fff', fontSize: 16, fontWeight: 'bold'}}>James Smith</Text>
-                        <Text style={{fontFamily: 'Raleway', color: '#ddd', fontSize: 12, lineHeight: 20}}>james.smith@example.com</Text>
+                    <View style={styles.screenContainer}>
+                        <View style={[styles.screenStyle, styles.mt25, (this.props.activeItemKey=='Home') ? styles.activeBackgroundColor : null]}>
+                            <Text style={[styles.screenTextStyle, styles.myFont, (this.props.activeItemKey=='Home') ? styles.selectedTextStyle : null]} onPress={this.navigateToScreen('Home')}> <Icon name="ios-home" style={{color: '#eee', fontSize: 20}}/>   Home</Text>
+                        </View>
+                        <View style={[styles.screenStyle, styles.mt25, (this.props.activeItemKey=='Settings') ? styles.activeBackgroundColor : null]}>
+                            <Text style={[styles.screenTextStyle, styles.myFont, (this.props.activeItemKey=='Settings') ? styles.selectedTextStyle : null]} onPress={this.navigateToScreen('Settings')}> <Icon name="ios-settings" style={{color: '#eee', fontSize: 20}}/>   Settings</Text>
+                        </View>
+                        <View style={[styles.screenStyle, styles.mt25, (this.props.activeItemKey=='Splash') ? styles.activeBackgroundColor : null]}>
+                            <Text style={[styles.screenTextStyle, styles.myFont, (this.props.activeItemKey=='Splash') ? styles.selectedTextStyle : null]} onPress={this.navigateToScreen('Splash')}><Icon name="md-water" style={{color: '#eee', fontSize: 20}}/>   Splash Screen</Text>
+                        </View>
+                        <View style={[styles.screenStyle, styles.mt25, (this.props.activeItemKey=='Login') ? styles.activeBackgroundColor : null]}>
+                            <Text style={[styles.screenTextStyle, styles.myFont, (this.props.activeItemKey=='Login') ? styles.selectedTextStyle : null]} onPress={this.navigateToScreen('Login')}><Icon name="ios-log-in" style={{color: '#eee', fontSize: 20}}/>   Login</Text>
+                        </View>
+                        
                     </View>
-                </View>
-                <View style={styles.screenContainer}>
-                    <View style={[styles.screenStyle, styles.mt25, (this.props.activeItemKey=='Home') ? styles.activeBackgroundColor : null]}>
-                        <Text style={[styles.screenTextStyle, styles.myFont, (this.props.activeItemKey=='Home') ? styles.selectedTextStyle : null]} onPress={this.navigateToScreen('Home')}> <Icon name="ios-home" style={{color: '#eee', fontSize: 20}}/>   Home</Text>
+                    <View style={styles.footer}>
+                        <View style={{justifyContent: 'flex-start'}}>
+                            <ImageBackground source={require('../../assets/movemandu-white.png')} style={{flex: 1, width: 100, height: 50, marginRight: '5%', left: '30%', top: '80%'}} ></ImageBackground>
+                        </View>
+                        <View style={{justifyContent: 'flex-end', bottom: 30}}> 
+                        <Text style={[styles.footerText, styles.myFont]}>{'\u00A9'} 2019. {'\n'}Sobhan Niroula</Text>
+                        </View>
+                        
                     </View>
-                    <View style={[styles.screenStyle, styles.mt25, (this.props.activeItemKey=='Settings') ? styles.activeBackgroundColor : null]}>
-                        <Text style={[styles.screenTextStyle, styles.myFont, (this.props.activeItemKey=='Settings') ? styles.selectedTextStyle : null]} onPress={this.navigateToScreen('Settings')}> <Icon name="ios-settings" style={{color: '#eee', fontSize: 20}}/>   Settings</Text>
+                </ImageBackground> 
+            </View>
+        );
+      } else if (this.props.jwt) {
+        return (
+            <View style={styles.container}>
+                <ImageBackground source={require('../../assets/Dharahara.jpg')} style={{flex: 1, height: '100%', width: '100%'}}>
+                    <View style={styles.headerContainer}>
+                        <View style={{top: 25, left: 10, justifyContent: 'flex-start'}}>
+                            <Image source={require('../../assets/user-logo.png')} style={styles.userLogo}></Image>
+                        </View>
+                        <View style={{justifyContent: 'flex-end', marginLeft: 25, marginBottom: 10}}>
+                            <Text style={{fontFamily: 'Raleway', color: '#fff', fontSize: 16, fontWeight: 'bold'}}>James Smith</Text>
+                            <Text style={{fontFamily: 'Raleway', color: '#ddd', fontSize: 12, lineHeight: 20}}>james.smith@example.com</Text>
+                        </View>
                     </View>
-                    <View style={[styles.screenStyle, styles.mt25, (this.props.activeItemKey=='Admin') ? styles.activeBackgroundColor : null]}>
-                        <Text style={[styles.screenTextStyle, styles.myFont, (this.props.activeItemKey=='Admin') ? styles.selectedTextStyle : null]} onPress={this.navigateToScreen('Admin')}>  <Icon name="ios-man" style={{color: '#eee', fontSize: 20}}/>   Admin</Text>
+                    <View style={styles.screenContainer}>
+                        <View style={[styles.screenStyle, styles.mt25, (this.props.activeItemKey=='Home') ? styles.activeBackgroundColor : null]}>
+                            <Text style={[styles.screenTextStyle, styles.myFont, (this.props.activeItemKey=='Home') ? styles.selectedTextStyle : null]} onPress={this.navigateToScreen('Home')}> <Icon name="ios-home" style={{color: '#eee', fontSize: 20}}/>   Home</Text>
+                        </View>
+                        <View style={[styles.screenStyle, styles.mt25, (this.props.activeItemKey=='Settings') ? styles.activeBackgroundColor : null]}>
+                            <Text style={[styles.screenTextStyle, styles.myFont, (this.props.activeItemKey=='Settings') ? styles.selectedTextStyle : null]} onPress={this.navigateToScreen('Settings')}> <Icon name="ios-settings" style={{color: '#eee', fontSize: 20}}/>   Settings</Text>
+                        </View>
+                        <View style={[styles.screenStyle, styles.mt25, (this.props.activeItemKey=='Admin') ? styles.activeBackgroundColor : null]}>
+                            <Text style={[styles.screenTextStyle, styles.myFont, (this.props.activeItemKey=='Admin') ? styles.selectedTextStyle : null]} onPress={this.navigateToScreen('Admin')}>  <Icon name="ios-man" style={{color: '#eee', fontSize: 20}}/>   Admin</Text>
+                        </View>
+                        
+                        <View style={[styles.screenStyle, styles.mt25]}>
+                            <Text style={[styles.screenTextStyle, styles.myFont]} onPress={this.props.logOut}><Icon name="ios-log-in" style={{color: '#eee', fontSize: 20}}/>   Logout</Text>
+                        </View>
+                        
                     </View>
-                    <View style={[styles.screenStyle, styles.mt25, (this.props.activeItemKey=='Splash') ? styles.activeBackgroundColor : null]}>
-                        <Text style={[styles.screenTextStyle, styles.myFont, (this.props.activeItemKey=='Splash') ? styles.selectedTextStyle : null]} onPress={this.navigateToScreen('Splash')}><Icon name="md-water" style={{color: '#eee', fontSize: 20}}/>   Splash Screen</Text>
+                    <View style={styles.footer}>
+                        <View style={{justifyContent: 'flex-start'}}>
+                            <ImageBackground source={require('../../assets/movemandu-white.png')} style={{flex: 1, width: 100, height: 50, marginRight: '5%', left: '30%', top: '80%'}} ></ImageBackground>
+                        </View>
+                        <View style={{justifyContent: 'flex-end', bottom: 30}}> 
+                        <Text style={[styles.footerText, styles.myFont]}>{'\u00A9'} 2019. {'\n'}Sobhan Niroula</Text>
+                        </View>
+                        
                     </View>
-                    <View style={[styles.screenStyle, styles.mt25, (this.props.activeItemKey=='Login') ? styles.activeBackgroundColor : null]}>
-                        <Text style={[styles.screenTextStyle, styles.myFont, (this.props.activeItemKey=='Login') ? styles.selectedTextStyle : null]} onPress={this.navigateToScreen('Login')}><Icon name="ios-log-in" style={{color: '#eee', fontSize: 20}}/>   Login</Text>
-                    </View>
-                    
-                </View>
-                <View style={styles.footer}>
-                    <View style={{justifyContent: 'flex-start'}}>
-                        <ImageBackground source={require('../../assets/movemandu-white.png')} style={{flex: 1, width: 100, height: 50, marginRight: '5%', left: '30%', top: '80%'}} ></ImageBackground>
-                    </View>
-                    <View style={{justifyContent: 'flex-end', bottom: 30}}> 
-                    <Text style={[styles.footerText, styles.myFont]}>{'\u00A9'} 2019. {'\n'}Sobhan Niroula</Text>
-                    </View>
-                    
-                </View>
-            </ImageBackground> 
-        </View>
-    )
+                </ImageBackground> 
+            </View>
+        )
+      }
+    
   }
 }
 
@@ -67,7 +115,8 @@ const styles = StyleSheet.create({
     },
     headerContainer: {
         height: 100,
-        flexDirection: 'row'
+        flexDirection: 'row',
+        top: '5%'
     },
     myFont: {
         fontFamily: 'Raleway'

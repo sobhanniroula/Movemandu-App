@@ -5,21 +5,48 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 import LoginTabScreen from './LoginTabScreen';
 import SignupTabScreen from './SignupTabScreen';
+import MyNavbar from '../../App';
 
 
 
 export default class LoginScreen extends Component {
-    state = {
-        index: 0,
-        currentRoute: 'first',
-        currentColor: '',
-        routes: [
-          { key: 'first', title: 'Login' },
-          { key: 'second', title: 'Signup' },
-        ],
-      };
+    constructor(props) {
+        super(props);
+        this.state = {
+            index: 0,
+            currentRoute: 'first',
+            currentColor: '',
+            routes: [
+              { key: 'first', title: 'Login' },
+              { key: 'second', title: 'Signup' },
+            ],
+            showLogin: false
+        };
 
-      handleColor = () => {
+        this.authSwitch = this.authSwitch.bind(this);
+        this.whichForm = this.whichForm.bind(this);
+    }
+
+
+    authSwitch() {
+        this.setState({
+          showLogin: !this.state.showLogin
+        });
+      }
+
+    whichForm() {
+        if (!this.state.showLogin) {
+            return (
+                <SignupTabScreen />
+            );
+        } else {
+            return (
+                <LoginTabScreen />
+            );
+        }
+    }
+
+    handleColor = () => {
         if (this.state.index === 0) {
             this.setState({
                 currentColor: 'background: "#4887b0"'
