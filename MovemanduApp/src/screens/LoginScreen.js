@@ -5,13 +5,13 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 import LoginTabScreen from './LoginTabScreen';
 import SignupTabScreen from './SignupTabScreen';
-import MyNavbar from '../../App';
 
 
 
 export default class LoginScreen extends Component {
     constructor(props) {
         super(props);
+
         this.state = {
             index: 0,
             currentRoute: 'first',
@@ -20,50 +20,15 @@ export default class LoginScreen extends Component {
               { key: 'first', title: 'Login' },
               { key: 'second', title: 'Signup' },
             ],
-            showLogin: false
         };
-
-        this.authSwitch = this.authSwitch.bind(this);
-        this.whichForm = this.whichForm.bind(this);
     }
-
-
-    authSwitch() {
-        this.setState({
-          showLogin: !this.state.showLogin
-        });
-      }
-
-    whichForm() {
-        if (!this.state.showLogin) {
-            return (
-                <SignupTabScreen />
-            );
-        } else {
-            return (
-                <LoginTabScreen />
-            );
-        }
-    }
-
-    handleColor = () => {
-        if (this.state.index === 0) {
-            this.setState({
-                currentColor: 'background: "#4887b0"'
-            });
-        } else {
-            this.setState({
-                currentColor: 'background: "#00bb88"'
-            });
-        }
-    }
-
+       
 
     render() {
         return (
             <Container>
 
-                <Header style={styles.colorBlue} androidStatusBarColor='#4887b0'>
+                <Header style={styles.colorBlue} androidStatusBarColor='#2293f4'>
                     <Left style={{top: '4%'}}>
                         <Icon name="ios-menu" onPress={() => this.props.navigation.navigate('DrawerOpen')} style={styles.iconText} />
                     </Left>
@@ -90,39 +55,11 @@ export default class LoginScreen extends Component {
 
 
 
-// const LoginSignupTab = createAppContainer(
-//     createMaterialTopTabNavigator(
-//     {
-//       Login: { screen: LoginTabScreen },
-//       Signup: { screen: SignupTabScreen },
-//     },
-//     {
-//       tabBarPosition: 'top',
-//       swipeEnabled: true,
-//       animationEnabled: true,
-//       tabBarOptions: {
-//         activeTintColor: '#FFFFFF',
-//         inactiveTintColor: '#F8F8F8',
-//         style: {
-//           backgroundColor: '#633689',
-//         },
-//         labelStyle: {
-//           textAlign: 'center',
-//         },
-//         indicatorStyle: {
-//           borderBottomColor: '#87B56A',
-//           borderBottomWidth: 2,
-//         },
-//       },
-//     }
-//   ));
-
   
 const styles = StyleSheet.create({
     container: {
             flex: 1,
-            alignItems: 'center',
-            // justifyContent: 'center'
+            alignItems: 'center'
     },
     scene: {
         flex: 1,

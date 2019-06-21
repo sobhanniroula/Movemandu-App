@@ -10,14 +10,15 @@ import {
     Image, 
     Dimensions 
 } from 'react-native';
-import PropTypes from 'prop-types';
+
 import Icon from 'react-native-vector-icons/Ionicons';
-import UserInput from '../forms/UserInput';
-import ButtonSubmit from '../forms/ButtonSubmit';
-import SignupTabScreen from '../screens/SignupTabScreen';
+import {UserInput} from '../forms/UserInput';
+import {ButtonSubmit} from '../forms/ButtonSubmit';
+import { Loading } from '../forms/Loading';
 import usernameImg from '../images/username.png';
 import passwordImg from '../images/password.png';
 import eyeImg from '../images/eye_black.png';
+
 
 
 
@@ -26,6 +27,10 @@ export default class LoginTabScreen extends Component {
         super(props);
 
         this.state = {
+            email: '',
+            password: '',
+            error: '',
+            loading: false,
             showPass: true,
             press: false
         };
@@ -39,10 +44,10 @@ export default class LoginTabScreen extends Component {
     }
 
     render() {
+        const { username, password, error, loading } = this.state;
+
             return (
                 <View style={[styles.container, styles.colorBlue]}>
-
-                    
 
                     <KeyboardAvoidingView behavior="padding" style={styles.container}>
                         <View style={{height: 80}}>
@@ -50,33 +55,40 @@ export default class LoginTabScreen extends Component {
                         </View>
                    
                         <View style={{marginTop: 75, height: 100}}>
-                        <UserInput
-                            source={usernameImg}
-                            placeholder="Username"
-                            autoCapitalize={'none'}
-                            returnKeyType={'done'}
-                            autoCorrect={false}
-                        />
-                        <UserInput
-                            style={{marginTop: -35}}
-                            source={passwordImg}
-                            secureTextEntry={this.state.showPass}
-                            placeholder="Password"
-                            returnKeyType={'done'}
-                            autoCapitalize={'none'}
-                            autoCorrect={false}
-                        />
-                        <TouchableOpacity
-                            activeOpacity={0.7}
-                            style={styles.btnEye}
-                            onPress={this.showPass}>
-                            <Image source={eyeImg} style={styles.iconEye} />
-                        </TouchableOpacity>
-                        
-                        
-                       
+                            <UserInput
+                                source={usernameImg}
+                                placeholder="Username"
+                                value={username}
+                                onChangeText={username => this.setState({ username })}
+                            />
+                            <UserInput
+                                style={{marginTop: -35}}
+                                source={passwordImg}
+                                secureTextEntry={this.state.showPass}
+                                placeholder="Password"
+                                value={password}
+                                onChangeText={password => this.setState({ password })}
+                            />
+                            <TouchableOpacity
+                                activeOpacity={0.7}
+                                style={styles.btnEye}
+                                onPress={this.showPass}>
+                                <Image source={eyeImg} style={styles.iconEye} />
+                            </TouchableOpacity>
+                            
+                            <Text style={styles.errorText}>
+                                {error}
+                            </Text>
+                            
+                            {!loading ? 
+                                <ButtonSubmit> 
+                                    Login
+                                </ButtonSubmit>   
+                            : 
+                                <Loading size={'large'} />
+                            }
                         </View>
-                        <ButtonSubmit />
+                        
                     </KeyboardAvoidingView>
 
                     
@@ -114,6 +126,11 @@ const styles = StyleSheet.create({
         fontFamily: 'Raleway',
         top: 50
     },
+    errorText: {
+        alignSelf: 'center',
+        fontSize: 18,
+        color: '#dd2211'
+    },  
     fontFam: {
         fontFamily: 'Raleway'
     },

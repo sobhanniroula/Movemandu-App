@@ -10,9 +10,10 @@ import {
     Image,
     Dimensions
 } from 'react-native';
-import PropTypes from 'prop-types';
-import UserInput from '../forms/UserInput';
-import ButtonSubmit from '../forms/ButtonSubmit';
+
+import {UserInput} from '../forms/UserInput';
+import {ButtonSubmit} from '../forms/ButtonSubmit';
+import {Loading} from '../forms/Loading';
 import Icon from 'react-native-vector-icons/Ionicons';
 import usernameImg from '../images/username.png';
 import passwordImg from '../images/password.png';
@@ -27,29 +28,18 @@ export default class SignupTabScreen extends Component {
 
         this.state = {
             username: '',
-            password: '',
             email: '',
-            phone_number: '',
+            password: '',
+            rePassword: '',
             showPass: true,
-            press: false
+            press: false,
+            error: '',
+            loading: false
         };
         
         this.showPass = this.showPass.bind(this);
     }
 
-    onChangeText = (key, val) => {
-        this.setState({ [key]: val })
-        }
-    
-    signUp = async () => {
-        const { username, password, email, phone_number } = this.state
-        try {
-            // here place your signup logic
-            console.log('user successfully signed up!: ', success)
-        } catch (err) {
-            console.log('error signing up: ', err)
-        }
-    }
 
     showPass() {
         this.state.press === false ? 
@@ -59,6 +49,8 @@ export default class SignupTabScreen extends Component {
     
 
     render() {
+        const { username, email, password, rePassword, error, loading } = this.state;
+
         return (
             <View style={[styles.container, styles.colorGreen]}>
 
@@ -70,35 +62,32 @@ export default class SignupTabScreen extends Component {
                     <View style={{marginTop: 60, height: 230}}>
                         <View style={{flex: 1}}>
                             <Icon name="ios-mail" style={styles.iconMail} />
-                            <TextInput
-                                style={styles.input}
+                            <UserInput
                                 placeholder='Email'
-                                autoCapitalize="none"
                                 placeholderTextColor='white'
-                                onChangeText={val => this.onChangeText('email', val)}
+                                value={email}
+                                onChangeText={email => this.setState({ email })}
                             />
                         </View>
 
                         <View style={{flex: 1}}>
                             <Image source={usernameImg} style={styles.inlineImg} />      
-                            <TextInput
-                                style={styles.input}
+                            <UserInput
                                 placeholder='Username'
-                                autoCapitalize="none"
                                 placeholderTextColor='white'
-                                onChangeText={val => this.onChangeText('username', val)}
+                                value={username}
+                                onChangeText={username => this.setState({ username })}
                             />
                         </View>
 
                         <View style={{flex: 1}}>
                             <Image source={passwordImg} style={styles.inlineImg} />
-                            <TextInput
-                                style={styles.input}
+                            <UserInput
                                 placeholder='Password'
-                                autoCapitalize="none"
                                 placeholderTextColor='white'
+                                value={password}
                                 secureTextEntry={this.state.showPass}
-                                onChangeText={val => this.onChangeText('password', val)}
+                                onChangeText={password => this.setState({ password })}
                             />
                             <TouchableOpacity
                                 activeOpacity={0.7}
@@ -110,26 +99,29 @@ export default class SignupTabScreen extends Component {
                         
                         <View style={{flex: 1}}>
                             <Image source={passwordImg} style={styles.inlineImg} />
-                            <TextInput
-                                style={styles.input}
+                            <UserInput
                                 placeholder='Re-enter password'
-                                autoCapitalize="none"
                                 placeholderTextColor='white'
+                                value={rePassword}
                                 secureTextEntry={this.state.showPass}
-                                onChangeText={val => this.onChangeText('password', val)}
+                                onChangeText={rePassword => this.setState({ rePassword })}
                             />
                         </View>
+
+                        <Text style={styles.errorText}>{error}</Text>
                         
                         <View style={styles.submitView}>
-                            <TouchableOpacity
-                                activeOpacity={0.9}
-                                onPress={this.signUp}
-                                style={styles.submitBtn}> 
-                                <Text style={styles.submitText}>Register</Text>
-                            </TouchableOpacity>
+                            {!loading ? 
+                                <ButtonSubmit>
+                                    Register
+                                </ButtonSubmit>
+                            :
+                                <Loading size={'large'} />
+                            }
                         </View>
-                        
+
                     </View>
+
                 </KeyboardAvoidingView>
                     
             </View>
@@ -147,18 +139,6 @@ const styles = StyleSheet.create({
             flex: 1,
             alignItems: 'center',
     },
-    input: {
-        width: DEVICE_WIDTH - 40,
-        height: 40,
-        backgroundColor: 'rgba(255, 255, 255, 0.4)',
-        color: '#fff',
-        marginHorizontal: 20,
-        borderRadius: 20,
-        fontSize: 14,
-        fontFamily: 'Raleway',
-        margin: 2,
-        paddingLeft: 50
-      },
     text: {
         color: '#fff',
         fontSize: 20,
@@ -220,6 +200,11 @@ const styles = StyleSheet.create({
         fontSize: 18,
         backgroundColor: 'transparent'
     },
+    errorText: {
+        alignSelf: 'center',
+        fontSize: 18,
+        color: '#dd2211'
+    },  
     colorGreen: {
         backgroundColor: '#00bb88'
     },
